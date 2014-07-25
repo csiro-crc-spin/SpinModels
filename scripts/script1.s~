@@ -3,7 +3,7 @@ cc<-GenericModel(iterations=99, num_subjects=1000,base_seed=122)
 cc<-GenericModel(99, 1,1000,122,20)
 # could not find function "GenericModel"
 
-cc<-CrcSpinModel$new(iterations=99, num_subjects=1000,base_seed=122)
+system.time(cc<-CrcSpinModel$new(iterations=99, num_subjects=1000,base_seed=122))
 #rror: no valid constructor available for the argument list
 # Timing stopped at: 0.004 0 0.021
 
@@ -301,23 +301,29 @@ Exported revision 244.
 ## #to create a windows library
 
 
-svn export https://svnserv.csiro.au/svn/dom039/CRC-Spin2/branches/CRC-Spin2-Rcpp-package #Exported revision 244.
+svn export https://svnserv.csiro.au/svn/dom039/CRC-Spin2/branches/CRC-Spin2-Rcpp-package
 git config --global user.email "rob.dunne@csiro.au"
 git config --global user.name "dun280"
 cd SpinModels/
 
 git init
 git add .
-git commit -m "first commit"
-git remote add origin https://github.com/csiro-crc-spin/SpinModels.git
-git push -u origin master
-
+git remote add origin https://github.com/csiro-crc-spin/RCSpin.git
+git push origin master
+git pull https://github.com/parsifal9/test1.git/  #there is a README.md file that has to be pulled down first
 
 tamar: git push origin master
+#Counting objects: 32, done.
+#Delta compression using up to 2 threads.
+#Compressing objects: 100% (31/31), done.
+#Writing objects: 100% (31/31), 141.14 KiB | 0 bytes/s, done.
+#Total 31 (delta 3), reused 0 (delta 0)
+#To https://github.com/parsifal9/test1.git
+#   31fc568..18c666c  master -> master
 
 
 library(devtools)
-install_github("csiro-crc-spin/SpinModels",args=" -l ~/Downloads/temp")
+install_github("csiro-crc-spin/RCSpin",args=" -l ~/Downloads/temp")
 library("RCSpin",lib.loc="~/Downloads/temp")
 cc<-GenericModel(iterations=99, num_subjects=10,base_seed=122)
 cc<-CrcSpinModel$new(iterations=99, num_subjects=10,base_seed=122)
