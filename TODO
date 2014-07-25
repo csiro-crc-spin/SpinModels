@@ -1,0 +1,105 @@
+Wednesday, July 16, 2014
+
+dddm<-DukesCrcSpinModel$new(iterations=99, num_subjects=50, base_seed=125, commencement_age=20)
+dddm$run()
+aa<-organize_results(dddm)
+aa$results.M$person.state.deceased[1]
+[1] 0
+Warning message:
+In `$.data.frame`(aa$results.M, person.state.deceased) :
+  Name partially matched in data frame
+
+we have variable names like "person.state.deceased.person.state.deceased.CRC" 
+These should probably be cleaned up
+
+also we have
+aa$results.M$colon.state.CRC
+aa$results.M$colon.state.symptomatic.CRC
+
+but for  the CrcSpinModel we have
+results.M$colon.state.pre.symptomatic.CRC
+results.M$colon.state.CRC
+
+
+----------------------------------------------------------------------------------------
+Thursday, July 10, 2014
+The data rates problem has returned!
+
+library(RCSpin)
+cc<-GenericModel(iterations=99, num_subjects=1000,base_seed=122)
+cc$run()
+#Error in sample.int(length(x), size, replace, prob) : 
+#  object 'death_rate_male' not found
+
+had to change zzz.R to
+.onLoad <- function(libname, pkgname){
+    data("death_rates", package="RCSpin")
+}
+
+but this means that the data is loaded into the top environment. What is going on?
+
+OK fixed
+zzz.R is
+.onLoad <- function(libname, pkgname){
+    data("death_rates", package=pkgname, envir=parent.env(environment()))
+}
+
+added export(death_rates) to NAMESPACE
+----------------------------------------------------------------------------------------
+Wednesday, July  9, 2014
+
+check with Caroline about the name and the references
+
+
+
+----------------------------------------------------------------------------------------
+Wednesday, June 25, 2014
+1) added death-rates.R to RCSpin/R
+it did not like the url
+\url{http://www.abs.gov.au/AUSSTATS/abs@.nsf/Lookup/3302.0.55.001Main+Features12008-2010}
+so I had to remove the "@" -- how can I get this in. roxygen says 
+"unknown key"
+fixed -- use @@
+
+
+
+2) ls()
+[1] "death_rate_female" "death_rate_male"   "death_rates"      
+
+These should be in  RCSpin i.e with
+> objects(2)
+ [1] "Adenoma"                 "AdenomaParams"          
+ [3] "ClinicalHistory"         "Colon"                  
+ [5] "CrcRisk"                 "CrcRiskParams"          
+ [7] "CrcSpinModel"            "DukesAdenoma"           
+ [9] "DukesAdenomaParams"      "DukesColon"             
+[11] "DukesCrcSpinModel"       "DukesPersonWithColon"   
+[13] "GenericModel"            "lappend"                
+[15] "Person"                  "PersonWithColon"        
+[17] "Risk"                    "risk_of_an_adenoma"     
+[19] "SymptomaticPresentation" "Test"     
+
+not in the in the top level.
+
+Fixed --  changed zzz.R to
+.onLoad <- function(libname, pkgname){
+    data("death_rates", package="RCSpin", envir = environment())
+
+}
+
+now
+> death_rate_male
+ Error: object 'death_rate_male' not found
+ > cc<-GenericModel(iterations=99, num_subjects=1000,base_seed=122)                                                                                                                           
+ > data(death_rates)
+!> death_rate_female
+   [1] 0.00353 0.00031 0.00016 0.00013 0.00010 0.00009 0.00008 0.00008 0.00007
+  [10] 0.00007 0.00007 0.00008 0.00008 0.00009 0.00012 0.00015 0.00019 0.00022
+
+What will happen when the user creates another death_rates object, say the death rates in the
+USA. I assume that it will be found first and used by the model. But what happens when the user has 
+multile objects death_rate_USA, death_rate_Nigeria etc. How will we handel this?
+
+
+
+

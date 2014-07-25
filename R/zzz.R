@@ -1,0 +1,20 @@
+
+## Up until R 2.15.0, the require("methods") is needed but (now)
+## triggers an warning from R CMD check
+.onLoad <- function(libname, pkgname){
+    #require("methods")  ## needed with R <= 2.15.0
+    loadRcppModules()
+
+    # load the package data and transfer it to C++ space via
+    # the interface function
+    data("death_rates", package="SpinModels")
+    setDeathRateTables(death_rate_male, death_rate_female)
+}
+
+
+## For R 2.15.1 and later this also works. Note that calling loadModule() triggers
+## a load action, so this does not have to be placed in .onLoad() or evalqOnLoad().
+#loadModule("generic_spin", TRUE)
+#loadModule("crc_spin", TRUE)
+
+

@@ -1,0 +1,3 @@
+useDynLib(SpinModels)
+exportPattern("^[[:alpha:]]+")
+import( Rcpp )

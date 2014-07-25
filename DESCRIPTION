@@ -1,0 +1,19 @@
+Package: SpinModels
+Type: Package
+Title: Group of Spin-alike models
+Version: 0.1
+Date: 2013-08-22
+Author@R: c(person("Rob", "Dunne", role = c("aut", "cre"),
+                    email = "Rob.Dunne@csiro.au",
+                    comment = "R model code"),
+            person("Luke", "Domanski", role = "aut",
+                    email = "Luke.Domanski@csiro.au"
+                    comment = "OO design and Rcpp extension"))
+Author: Rob Dunne and Luke Domanski
+Maintainer: Rob Dunne <Rob.Dunne@csiro.au>
+Copyright: CSIRO, 2013-
+Description: A set of extensible classes for running population disease intervention models. Currently provides a generic base class for running a model over a study group for a given number of iterations, and an implementation + extension of the CRC Spin model.
+License: file LICENSE
+Depends: Rcpp (>= 0.10.4), RcppArmadillo (>= 0.3.900.0)
+LinkingTo: Rcpp, RcppArmadillo
+RcppModules: generic_spin, crc_spin, dukes_crc_spin

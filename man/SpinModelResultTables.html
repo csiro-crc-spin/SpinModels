@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.10: http://docutils.sourceforge.net/" />
+<title>CrcSpin result matrix map</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7514 2012-09-14 14:27:12Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="crcspin-result-matrix-map">
+<h1 class="title">CrcSpin result matrix map</h1>
+
+<p>Below is pseudo code describing the expressions used to obtain study_result
+column values in CrcSpinModel and DukesCrcSpinModel.</p>
+<p>The expressions are applied over all <tt class="docutils literal">persons</tt>, then <tt class="docutils literal">colons</tt> (one per person),
+then <tt class="docutils literal">adenomas</tt> (many per colon) in the study. The object nesting
+<tt class="docutils literal">person.colon.adenoma</tt> is implied and is not written explicitly for brevity.</p>
+<pre class="literal-block">
+///////////////////////////////
+// CRC Spin Columns
+
+/////////// set in getMedicalSnapshot
+// Count of adenoma states overall
+aa[1]=count(adenoma.state==&quot;adenoma&quot;);
+aa[2]=count(adenoma.state==&quot;large adenoma&quot;);
+aa[3]=count(adenoma.state==&quot;CRC&quot;);
+
+// How many people have transitioned to Clinical CRC
+aa[4]=count(person.colon_clinical==&quot;symptomatic CRC&quot;);
+
+// Count of colon states oveall
+aa[5]=count(colon.state==&quot;clear&quot;);
+aa[6]=count(colon.state==&quot;adenoma&quot;);
+aa[7]=count(colon.state==&quot;large adenoma&quot;);
+aa[8]=count(colon.state==&quot;CRC&quot;);
+aa[9]=count(colon.state==&quot;symptomatic CRC&quot;);
+
+
+// Count of colon sites overall
+aa[10]=count(colon.cancer_site==&quot;cecum&quot;);
+aa[11]=count(colon.cancer_site==&quot;ascending&quot;);
+aa[12]=count(colon.cancer_site==&quot;transverse&quot;);
+aa[13]=count(colon.cancer_site==&quot;descending&quot;);
+aa[14]=count(colon.cancer_site==&quot;sigmoid&quot;);
+aa[15]=count(colon.cancer_site==&quot;rectum&quot;);
+
+
+aa[16]=count(state==&quot;deceased&quot;);
+aa[17]=count(person.colon_clinical==&quot;symptomatic CRC&quot;);
+
+/////////// set in initiateCRCTreatment
+aa[18]=count(person.in_treatment_program)
+
+
+//////////////////////////////
+// Dukes CRC Spin Columns
+
+/////////// set in getMedicalSnapshot
+// Count of adenoma states overall
+aa[1] =count(adenoma.state==&quot;adenoma&quot;);
+aa[2] =count(adenoma.state==&quot;large adenoma&quot;);
+aa[3] =count(adenoma.state==&quot;CRC&quot;);
+aa[4] =count(adenoma.state==&quot;deceased&quot;);
+
+// How many people have transitioned to Clinical CRC
+aa[5] =count(person.colon_clinical==&quot;symptomatic CRC&quot;);
+
+// Count of colon states overall
+aa[6] =count(colon.state==&quot;clear&quot;);
+aa[7] =count(colon.state==&quot;adenoma&quot;);
+aa[8] =count(colon.state==&quot;large adenoma&quot;);
+aa[9] =count(colon.state==&quot;CRC&quot;);
+aa[10]=count(colon.state==&quot;symptomatic CRC&quot;);
+aa[11]=count(colon.state==&quot;deceased&quot;);
+
+// Count of adenoma stages in people with colon state CRC
+aa[12]=count(colon.state==&quot;CRC&quot; &amp;&amp; adenoma.stage==&quot;A&quot;);
+aa[13]=count(colon.state==&quot;CRC&quot; &amp;&amp; adenoma.stage==&quot;B&quot;);
+aa[14]=count(colon.state==&quot;CRC&quot; &amp;&amp; adenoma.stage==&quot;C&quot;);
+aa[15]=count(colon.state==&quot;CRC&quot; &amp;&amp; adenoma.stage==&quot;D&quot;);
+aa[16]=count(colon.state==&quot;CRC&quot; &amp;&amp; adenoma.stage==&quot;deceased&quot;);
+
+// Count of cancer sites in people with colon state CRC
+aa[17]=count(colon.state==&quot;CRC&quot; &amp;&amp; colon.cancer_site==&quot;cecum&quot;);
+aa[18]=count(colon.state==&quot;CRC&quot; &amp;&amp; colon.cancer_site==&quot;ascending&quot;);
+aa[19]=count(colon.state==&quot;CRC&quot; &amp;&amp; colon.cancer_site==&quot;transverse&quot;);
+aa[20]=count(colon.state==&quot;CRC&quot; &amp;&amp; colon.cancer_site==&quot;descending&quot;);
+aa[21]=count(colon.state==&quot;CRC&quot; &amp;&amp; colon.cancer_site==&quot;sigmoid&quot;);
+aa[22]=count(colon.state==&quot;CRC&quot; &amp;&amp; colon.cancer_site==&quot;rectum&quot;);
+
+// Count of adenoma stages in people with colon state CRC
+aa[23]=count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; adenoma.stage==&quot;A&quot;);
+aa[24]=count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; adenoma.stage==&quot;B&quot;);
+aa[25]=count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; adenoma.stage==&quot;C&quot;);
+aa[26]=count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; adenoma.stage==&quot;D&quot;);
+aa[27]=count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; adenoma.stage==&quot;deceased&quot;);
+
+// Count of cancer sites in people with colon state CRC
+aa[28]=count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.cancer_site==&quot;cecum&quot;);
+aa[29]=count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.cancer_site==&quot;ascending&quot;);
+aa[30]=count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.cancer_site==&quot;transverse&quot;);
+aa[31]=count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.cancer_site==&quot;descending&quot;);
+aa[32]=count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.cancer_site==&quot;sigmoid&quot;);
+aa[33]=count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.cancer_site==&quot;rectum&quot;);
+
+// Count of cancer sites overall
+aa[34]=count(colon.cancer_site==&quot;cecum&quot;);
+aa[35]=count(colon.cancer_site==&quot;ascending&quot;);
+aa[36]=count(colon.cancer_site==&quot;transverse&quot;);
+aa[37]=count(colon.cancer_site==&quot;descending&quot;);
+aa[38]=count(colon.cancer_site==&quot;sigmoid&quot;);
+aa[39]=count(colon.cancer_site==&quot;rectum&quot;);
+
+// Count of colon stages overall
+aa[40]=count(colon.stage==&quot;A&quot;);
+aa[41]=count(colon.stage==&quot;B&quot;);
+aa[42]=count(colon.stage==&quot;C&quot;);
+aa[43]=count(colon.stage==&quot;D&quot;);
+aa[44]=count(colon.stage==&quot;deceased&quot;);
+
+aa[45]=count(person.state==&quot;deceased&quot; || person.state==&quot;deceased CRC&quot;);
+aa[46]=count(person.colon_clinical==&quot;symptomatic CRC&quot;);
+
+//////////////// set in initiateCRCTreatment
+// Reserved for screening results
+aa[47]=count(if(CRC_treatment_initiated){FALSE} else {FALSE})
+aa[48]=count(if(CRC_treatment_initiated){FALSE} else {FALSE})
+aa[49]=count(if(CRC_treatment_initiated){FALSE} else {FALSE})
+aa[50]=count(if(CRC_treatment_initiated){FALSE} else {FALSE})
+aa[51]=count(if(CRC_treatment_initiated){FALSE} else {FALSE})
+
+// Counts of colonoscopy and colon info
+aa[52]=count(if(CRC_treatment_initiated){colonoscopy_performed} else {FALSE})
+aa[53]=count(if(CRC_treatment_initiated){(colon.state==&quot;adenoma&quot; || colon.state==&quot;large adenoma&quot;)} else {FALSE})
+aa[54]=count(if(CRC_treatment_initiated){(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.stage=&quot;A&quot;)} else {FALSE})
+aa[55]=count(if(CRC_treatment_initiated){(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.stage=&quot;B&quot;)} else {FALSE})
+aa[56]=count(if(CRC_treatment_initiated){(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.stage=&quot;C&quot;)} else {FALSE})
+aa[57]=count(if(CRC_treatment_initiated){(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.stage=&quot;D&quot;)} else {FALSE})
+aa[58]=count(if(CRC_treatment_initiated){(person.in_treatment_program=TRUE))} else {FALSE})
+aa[59]=count(if(CRC_treatment_initiated &amp;&amp; colonoscopy_performed){colonoscopy_caused_bleeding} else {FALSE})
+aa[60]=count(if(CRC_treatment_initiated &amp;&amp; colonoscopy_performed){colonoscopy_caused_perforation} else {FALSE})
+</pre>
+<p>Below is a tabular summary of <strong>ALL</strong> columns across both models with a mapping
+to which elements of the result array they occupy in each model.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="3%" />
+<col width="31%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">DukesCrcSpin</th>
+<th class="head">CrcSpin</th>
+<th class="head">Expression</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1</td>
+<td>1</td>
+<td>count(adenoma.state==&quot;adenoma&quot;);</td>
+<td>A count of adenomas in all patients of the study group that have state &quot;adenoma&quot;</td>
+</tr>
+<tr><td>2</td>
+<td>2</td>
+<td>count(adenoma.state==&quot;large adenoma&quot;);</td>
+<td>A count of adenomas in all patients of the study group that have state &quot;large adenoma&quot;</td>
+</tr>
+<tr><td>3</td>
+<td>3</td>
+<td>count(adenoma.state==&quot;CRC&quot;);</td>
+<td>A count of adenomas in all patients of the study group that have state &quot;CRC&quot;</td>
+</tr>
+<tr><td>4</td>
+<td>.</td>
+<td>count(adenoma.state==&quot;deceased&quot;);</td>
+<td>A count of adenomas in all patients of the study group that have state &quot;deceased&quot;</td>
+</tr>
+<tr><td>5</td>
+<td>4</td>
+<td>count(person.colon_clinical==&quot;symptomatic CRC&quot;);</td>
+<td>A count of patients that have colon_clinical state &quot;symptomatic CRC&quot;</td>
+</tr>
+<tr><td>6</td>
+<td>5</td>
+<td>count(colon.state==&quot;clear&quot;);</td>
+<td>A count of how many peoples colons were in state &quot;clear&quot;</td>
+</tr>
+<tr><td>7</td>
+<td>6</td>
+<td>count(colon.state==&quot;adenoma&quot;);</td>
+<td>A count of how many peoples colons were in state &quot;adenoma&quot;</td>
+</tr>
+<tr><td>8</td>
+<td>7</td>
+<td>count(colon.state==&quot;large adenoma&quot;);</td>
+<td>A count of how many peoples colons were in state &quot;large adenoma&quot;</td>
+</tr>
+<tr><td>9</td>
+<td>8</td>
+<td>count(colon.state==&quot;CRC&quot;);</td>
+<td>A count of how many peoples colons were in state &quot;CRC&quot;</td>
+</tr>
+<tr><td>10</td>
+<td>9</td>
+<td>count(colon.state==&quot;symptomatic CRC&quot;);</td>
+<td>A count of how many peoples colons were in state &quot;symptomatic CRC&quot;</td>
+</tr>
+<tr><td>11</td>
+<td>.</td>
+<td>count(colon.state==&quot;deceased&quot;);</td>
+<td>A count of how many peoples colons were in state &quot;deceased&quot;</td>
+</tr>
+<tr><td>12</td>
+<td>.</td>
+<td>count(colon.state==&quot;CRC&quot; &amp;&amp; adenoma.stage==&quot;A&quot;);</td>
+<td>A count of the adenomas that are at stage &quot;A&quot; in colons with state &quot;CRC&quot; across all people in the study group</td>
+</tr>
+<tr><td>13</td>
+<td>.</td>
+<td>count(colon.state==&quot;CRC&quot; &amp;&amp; adenoma.stage==&quot;B&quot;);</td>
+<td>A count of the adenomas that are at stage &quot;B&quot; in colons with state &quot;CRC&quot; across all people in the study group</td>
+</tr>
+<tr><td>14</td>
+<td>.</td>
+<td>count(colon.state==&quot;CRC&quot; &amp;&amp; adenoma.stage==&quot;C&quot;);</td>
+<td>A count of the adenomas that are at stage &quot;C&quot; in colons with state &quot;CRC&quot; across all people in the study group</td>
+</tr>
+<tr><td>15</td>
+<td>.</td>
+<td>count(colon.state==&quot;CRC&quot; &amp;&amp; adenoma.stage==&quot;D&quot;);</td>
+<td>A count of the adenomas that are at stage &quot;D&quot; in colons with state &quot;CRC&quot; across all people in the study group</td>
+</tr>
+<tr><td>16</td>
+<td>.</td>
+<td>count(colon.state==&quot;CRC&quot; &amp;&amp; adenoma.stage==&quot;deceased&quot;);</td>
+<td>A count of the adenomas that are at stage &quot;deceased&quot; in colons with state &quot;CRC&quot; in all people in the study group</td>
+</tr>
+<tr><td>17</td>
+<td>.</td>
+<td>count(colon.state==&quot;CRC&quot; &amp;&amp; colon.cancer_site==&quot;cecum&quot;);</td>
+<td>A count of colons in &quot;state&quot; that have the majority of their adenomas in the &quot;cecum&quot; location across all people in the study group</td>
+</tr>
+<tr><td>18</td>
+<td>.</td>
+<td>count(colon.state==&quot;CRC&quot; &amp;&amp; colon.cancer_site==&quot;ascending&quot;);</td>
+<td>A count of colons in &quot;state&quot; that have the majority of their adenomas in the &quot;ascending&quot; location across all people in the study group</td>
+</tr>
+<tr><td>19</td>
+<td>.</td>
+<td>count(colon.state==&quot;CRC&quot; &amp;&amp; colon.cancer_site==&quot;transverse&quot;);</td>
+<td>A count of colons in &quot;state&quot; that have the majority of their adenomas in the &quot;transverse&quot; location across all people in the study group</td>
+</tr>
+<tr><td>20</td>
+<td>.</td>
+<td>count(colon.state==&quot;CRC&quot; &amp;&amp; colon.cancer_site==&quot;descending&quot;);</td>
+<td>A count of colons in &quot;state&quot; that have the majority of their adenomas in the &quot;descending&quot; location across all people in the study group</td>
+</tr>
+<tr><td>21</td>
+<td>.</td>
+<td>count(colon.state==&quot;CRC&quot; &amp;&amp; colon.cancer_site==&quot;sigmoid&quot;);</td>
+<td>A count of colons in &quot;state&quot; that have the majority of their adenomas in the &quot;sigmoid&quot; location across all people in the study group</td>
+</tr>
+<tr><td>22</td>
+<td>.</td>
+<td>count(colon.state==&quot;CRC&quot; &amp;&amp; colon.cancer_site==&quot;rectum&quot;);</td>
+<td>A count of colons in &quot;state&quot; that have the majority of their adenomas in the &quot;rectum&quot; location across all people in the study group</td>
+</tr>
+<tr><td>23</td>
+<td>.</td>
+<td>count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; adenoma.stage==&quot;A&quot;);</td>
+<td>A count of the adenomas that are at stage &quot;A&quot; in people of the study group with colon_clinical set to &quot;symptomatic CRC&quot;</td>
+</tr>
+<tr><td>24</td>
+<td>.</td>
+<td>count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; adenoma.stage==&quot;B&quot;);</td>
+<td>A count of the adenomas that are at stage &quot;B&quot; in people of the study group with colon_clinical set to &quot;symptomatic CRC&quot;</td>
+</tr>
+<tr><td>25</td>
+<td>.</td>
+<td>count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; adenoma.stage==&quot;C&quot;);</td>
+<td>A count of the adenomas that are at stage &quot;C&quot; in people of the study group with colon_clinical set to &quot;symptomatic CRC&quot;</td>
+</tr>
+<tr><td>26</td>
+<td>.</td>
+<td>count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; adenoma.stage==&quot;D&quot;);</td>
+<td>A count of the adenomas that are at stage &quot;D&quot; in people of the study group with colon_clinical set to &quot;symptomatic CRC&quot;</td>
+</tr>
+<tr><td>27</td>
+<td>.</td>
+<td>count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; adenoma.stage==&quot;deceased&quot;);</td>
+<td>A count of the adenomas that are at stage &quot;deceased&quot; in people of the study group with colon_clinical set to &quot;symptomatic CRC&quot;</td>
+</tr>
+<tr><td>28</td>
+<td>.</td>
+<td>count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.cancer_site==&quot;cecum&quot;);</td>
+<td>A count of colons in &quot;state&quot; that have the majority of their adenomas in the &quot;cecum&quot; location across all people in the study group</td>
+</tr>
+<tr><td>29</td>
+<td>.</td>
+<td>count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.cancer_site==&quot;ascending&quot;);</td>
+<td>A count of colons in &quot;state&quot; that have the majority of their adenomas in the &quot;ascending&quot; location across all people in the study group</td>
+</tr>
+<tr><td>30</td>
+<td>.</td>
+<td>count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.cancer_site==&quot;transverse&quot;);</td>
+<td>A count of colons in &quot;state&quot; that have the majority of their adenomas in the &quot;transverse&quot; location across all people in the study group</td>
+</tr>
+<tr><td>31</td>
+<td>.</td>
+<td>count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.cancer_site==&quot;descending&quot;);</td>
+<td>A count of colons in &quot;state&quot; that have the majority of their adenomas in the &quot;descending&quot; location across all people in the study group</td>
+</tr>
+<tr><td>32</td>
+<td>.</td>
+<td>count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.cancer_site==&quot;sigmoid&quot;);</td>
+<td>A count of colons in &quot;state&quot; that have the majority of their adenomas in the &quot;sigmoid&quot; location across all people in the study group</td>
+</tr>
+<tr><td>33</td>
+<td>.</td>
+<td>count(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.cancer_site==&quot;rectum&quot;);</td>
+<td>A count of colons in &quot;state&quot; that have the majority of their adenomas in the &quot;rectum&quot; location across all people in the study group</td>
+</tr>
+<tr><td>34</td>
+<td>10</td>
+<td>count(colon.cancer_site==&quot;cecum&quot;);</td>
+<td>A count of how many people's colons overall that have the majority of their adenomas in the &quot;cecum&quot; location</td>
+</tr>
+<tr><td>35</td>
+<td>11</td>
+<td>count(colon.cancer_site==&quot;ascending&quot;);</td>
+<td>A count of how many people's colons overall that have the majority of their adenomas in the &quot;ascending&quot; location</td>
+</tr>
+<tr><td>36</td>
+<td>12</td>
+<td>count(colon.cancer_site==&quot;transverse&quot;);</td>
+<td>A count of how many people's colons overall that have the majority of their adenomas in the &quot;transverse&quot; location</td>
+</tr>
+<tr><td>37</td>
+<td>13</td>
+<td>count(colon.cancer_site==&quot;descending&quot;);</td>
+<td>A count of how many people's colons overall that have the majority of their adenomas in the &quot;descending&quot; location</td>
+</tr>
+<tr><td>38</td>
+<td>14</td>
+<td>count(colon.cancer_site==&quot;sigmoid&quot;);</td>
+<td>A count of how many people's colons overall that have the majority of their adenomas in the &quot;sigmoid&quot; location</td>
+</tr>
+<tr><td>39</td>
+<td>15</td>
+<td>count(colon.cancer_site==&quot;rectum&quot;);</td>
+<td>A count of how many people's colons overall that have the majority of their adenomas in the &quot;rectum&quot; location</td>
+</tr>
+<tr><td>40</td>
+<td>.</td>
+<td>count(colon.stage==&quot;A&quot;);</td>
+<td>A count of how many people's colons overall were in stage &quot;A&quot;</td>
+</tr>
+<tr><td>41</td>
+<td>.</td>
+<td>count(colon.stage==&quot;B&quot;);</td>
+<td>A count of how many people's colons overall were in stage &quot;B&quot;</td>
+</tr>
+<tr><td>42</td>
+<td>.</td>
+<td>count(colon.stage==&quot;C&quot;);</td>
+<td>A count of how many people's colons overall were in stage &quot;C&quot;</td>
+</tr>
+<tr><td>43</td>
+<td>.</td>
+<td>count(colon.stage==&quot;D&quot;);</td>
+<td>A count of how many people's colons overall were in stage &quot;D&quot;</td>
+</tr>
+<tr><td>44</td>
+<td>.</td>
+<td>count(colon.stage==&quot;deceased&quot;);</td>
+<td>A count of how many people's colons overall were in stage &quot;deceased&quot;</td>
+</tr>
+<tr><td>.</td>
+<td>16</td>
+<td>count(person.state==&quot;deceased&quot;);</td>
+<td>A count of people in the study that have died (i.e. their state is &quot;deceased&quot;)</td>
+</tr>
+<tr><td>45</td>
+<td>.</td>
+<td>count(person.state==&quot;deceased&quot; || person.state==&quot;deceased CRC&quot;);</td>
+<td>A count of people in the study that have died (i.e. their state is &quot;deceased&quot; or &quot;deceased CRC&quot;)</td>
+</tr>
+<tr><td>46</td>
+<td>17</td>
+<td>count(person.colon_clinical==&quot;symptomatic CRC&quot;);</td>
+<td>A count of patients that have colon_clinical state &quot;symptomatic CRC&quot;</td>
+</tr>
+<tr><td>47</td>
+<td>.</td>
+<td>FALSE|0 (not implemented)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>48</td>
+<td>.</td>
+<td>FALSE|0 (not implemented)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>49</td>
+<td>.</td>
+<td>FALSE|0 (not implemented)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>50</td>
+<td>.</td>
+<td>FALSE|0 (not implemented)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>51</td>
+<td>.</td>
+<td>FALSE|0 (not implemented)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>52</td>
+<td>.</td>
+<td><dl class="first last docutils">
+<dt>count(where(person.initiateCRCTreatment() called)</dt>
+<dd>&amp;&amp;(colonoscopy_performed))</dd>
+</dl>
+</td>
+<td>A count of people that where treated for CRC IN THIS ITERATION, in which a colonoscopy was performed</td>
+</tr>
+<tr><td>53</td>
+<td>.</td>
+<td><dl class="first last docutils">
+<dt>count(where(person.initiateCRCTreatment() called)</dt>
+<dd>&amp;&amp;(colon.state==&quot;adenoma&quot; || colon.state==&quot;large adenoma&quot;))</dd>
+</dl>
+</td>
+<td>A count of people that where treated for CRC IN THIS ITERATION, who had colons in state &quot;adenoma&quot; or &quot;large adenoma&quot;</td>
+</tr>
+<tr><td>54</td>
+<td>.</td>
+<td><dl class="first last docutils">
+<dt>count(where(person.initiateCRCTreatment() called)</dt>
+<dd>&amp;&amp;(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.stage==&quot;A&quot;))</dd>
+</dl>
+</td>
+<td>A count of people that where treated for CRC IN THIS ITERATION, who had colons in state &quot;symptomatic CRC&quot; and in stage &quot;A&quot;</td>
+</tr>
+<tr><td>55</td>
+<td>.</td>
+<td><dl class="first last docutils">
+<dt>count(where(person.initiateCRCTreatment() called)</dt>
+<dd>&amp;&amp;(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.stage==&quot;B&quot;))</dd>
+</dl>
+</td>
+<td>A count of people that where treated for CRC IN THIS ITERATION, who had colons in state &quot;symptomatic CRC&quot; and in stage &quot;B&quot;</td>
+</tr>
+<tr><td>56</td>
+<td>.</td>
+<td><dl class="first last docutils">
+<dt>count(where(person.initiateCRCTreatment() called)</dt>
+<dd>&amp;&amp;(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.stage==&quot;C&quot;))</dd>
+</dl>
+</td>
+<td>A count of people that where treated for CRC IN THIS ITERATION, who had colons in state &quot;symptomatic CRC&quot; and in stage &quot;C&quot;</td>
+</tr>
+<tr><td>57</td>
+<td>.</td>
+<td><dl class="first last docutils">
+<dt>count(where(person.initiateCRCTreatment() called)</dt>
+<dd>&amp;&amp;(colon.state==&quot;symptomatic CRC&quot; &amp;&amp; colon.stage==&quot;D&quot;))</dd>
+</dl>
+</td>
+<td>A count of people that where treated for CRC IN THIS ITERATION, who had colons in state &quot;symptomatic CRC&quot; and in stage &quot;D&quot;</td>
+</tr>
+<tr><td>58</td>
+<td>18</td>
+<td><dl class="first last docutils">
+<dt>count(where(person.initiateCRCTreatment() called))</dt>
+<dd>// =&gt; person.in_treatment_program</dd>
+</dl>
+</td>
+<td>A count of people put into a treatment program THIS ITERATION!!!</td>
+</tr>
+<tr><td>59</td>
+<td>.</td>
+<td><dl class="first last docutils">
+<dt>count(where(person.initiateCRCTreatment() called)</dt>
+<dd>&amp;&amp; colonoscopy_performed &amp;&amp; colonoscopy_caused_bleeding)</dd>
+</dl>
+</td>
+<td>A count of people that where treated for CRC IN THIS ITERATION, whose colonoscopy caused bleeding</td>
+</tr>
+<tr><td>60</td>
+<td>.</td>
+<td><dl class="first last docutils">
+<dt>count(where(person.initiateCRCTreatment() called)</dt>
+<dd>&amp;&amp; colonoscopy_performed &amp;&amp; colonoscopy_caused_perforation)</dd>
+</dl>
+</td>
+<td>A count of people that where treated for CRC IN THIS ITERATION, whose colonoscopy caused perforation</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
