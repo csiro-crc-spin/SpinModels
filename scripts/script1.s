@@ -314,6 +314,14 @@ git push -u origin master
 
 tamar: git push origin master
 
+ 
+# to clone and install etc
+git clone  https://github.com/csiro-crc-spin/SpinModels.git	    
+R CMD build SpinModels 
+R CMD INSTALL SpinModels_0.1.tar.gz -l ~/Downloads
+vignette("RCSpin")
+
+
 
 library(devtools)
 install_github("csiro-crc-spin/SpinModels",args=" -l ~/Downloads/temp")

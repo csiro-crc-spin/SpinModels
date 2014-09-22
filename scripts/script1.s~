@@ -1,18 +1,10 @@
 library(SpinModels)
-cc<-GenericModel$new(iterations=99, num_subjects=1000,base_seed=122)
-cc<-GenericModel$new(99, 1,1000)
-# could not find function "GenericModel"
 
-
-cc<-GenericModel$new(iterations=99, iteration_resolution=1,num_subjects=10,base_seed=122,commencement_age=20)
-cc<-GenericModel$new(99, 1,10,122,20)
+cc<-GenericModel$new(iterations=99, iteration_resolution=1,num_subjects=10,base_seed=122,commencement_age=20,study_results=matrix(0,0,0))
 
 
 
-cc<-CrcSpinModel$new(iterations=99, num_subjects=1000,base_seed=122)
 cc<-CrcSpinModel$new(99,1000, 122, 20)
-#rror: no valid constructor available for the argument list
-# Timing stopped at: 0.004 0 0.021
 
 system.time(dd<-DukesCrcSpinModel$new(99, 50000, 125, 20))
 #1.620   0.036   1.657
