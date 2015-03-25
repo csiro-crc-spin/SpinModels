@@ -10,6 +10,6 @@ namespace SpinUtil{
     // replicate the definition of RcppArmadilloExtensions::sample from the
     // header file
     template <class T>
-    T sample(const T &x, const int size, const bool replace, Rcpp::NumericVector prob_ = Rcpp::NumericVector(0) ) ;
+    T sample(const T &x, const int size, const bool replace, Rcpp::NumericVector prob_ ) ;
 }
 
